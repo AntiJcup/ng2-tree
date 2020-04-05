@@ -59,6 +59,10 @@ export class NodeDraggableDirective implements OnDestroy, OnInit {
       e.stopPropagation();
     }
 
+    if (this.tree.isBeingRenamed()) {
+      return false;
+    }
+
     this.nodeDraggableService.captureNode(new CapturedNode(this.nodeDraggable, this.tree));
 
     e.dataTransfer.setData('text', NodeDraggableDirective.DATA_TRANSFER_STUB_DATA);
