@@ -97,7 +97,7 @@ export class TreeInternalComponent implements OnInit, OnChanges, OnDestroy, Afte
   public isReadOnly = false;
   public controller: TreeController;
 
-  @ViewChild('checkbox') public checkboxElementRef: ElementRef;
+  @ViewChild('checkbox', {static: false}) public checkboxElementRef: ElementRef;
 
   private subscriptions: Subscription[] = [];
 
