@@ -24,7 +24,7 @@ export class NodeEditableDirective implements OnInit {
   public constructor(
     @Inject(Renderer2) private renderer: Renderer2,
     @Inject(ElementRef) private elementRef: ElementRef
-  ) {}
+  ) { }
 
   public ngOnInit(): void {
     const nativeElement = this.elementRef.nativeElement;
@@ -34,6 +34,13 @@ export class NodeEditableDirective implements OnInit {
     }
 
     this.renderer.setProperty(nativeElement, 'value', this.nodeValue);
+
+    let lastDot = this.nodeValue.lastIndexOf(".");
+    if (lastDot === -1) {
+      lastDot = this.nodeValue.length
+    }
+
+    nativeElement.setSelectionRange(0, lastDot);
   }
 
   @HostListener('keyup.enter', ['$event.target.value'])
