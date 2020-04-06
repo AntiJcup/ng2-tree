@@ -106,7 +106,7 @@ export class NodeDraggableDirective implements OnDestroy, OnInit {
 
   private isDropPossible(e: DragEvent): boolean {
     const capturedNode = this.nodeDraggableService.getCapturedNode();
-    return capturedNode && capturedNode.canBeDroppedAt(this.nodeDraggable) && this.containsElementAt(e);
+    return capturedNode && capturedNode.canBeDroppedAt(this.nodeDraggable);
   }
 
   private handleDragEnd(e: DragEvent): any {
