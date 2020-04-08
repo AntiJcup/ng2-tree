@@ -505,7 +505,7 @@ export class Tree {
     } else if (this._children && !isEmpty(this._children)) {
       this.node._foldingType = this.isCollapsedOnInit() ? FoldingType.Collapsed : FoldingType.Expanded;
     } else if (Array.isArray(this._children)) {
-      this.node._foldingType = FoldingType.Empty;
+      this.node._foldingType = FoldingType.Collapsed;
     } else {
       this.node._foldingType = FoldingType.Leaf;
     }
