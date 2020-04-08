@@ -471,7 +471,7 @@ export class Tree {
    * If node is a "Branch" and it is expanded, then by invoking current method state of the tree should be switched to "collapsed" and vice versa.
    */
   public switchFoldingType(): void {
-    if (this.isLeaf() || !this.hasChildren()) {
+    if (this.isLeaf()) {
       return;
     }
 
