@@ -501,11 +501,11 @@ export class Tree {
    */
   private _setFoldingType(): void {
     if (this.childrenShouldBeLoaded()) {
-      this.node._foldingType = FoldingType.Collapsed;
+      this.node._foldingType = this.node.settings.isCollapsedOnInit ? FoldingType.Collapsed : FoldingType.Expanded;
     } else if (this._children && !isEmpty(this._children)) {
       this.node._foldingType = this.isCollapsedOnInit() ? FoldingType.Collapsed : FoldingType.Expanded;
     } else if (Array.isArray(this._children)) {
-      this.node._foldingType = FoldingType.Collapsed;
+      this.node._foldingType = this.node.settings.isCollapsedOnInit ? FoldingType.Collapsed : FoldingType.Expanded;
     } else {
       this.node._foldingType = FoldingType.Leaf;
     }
