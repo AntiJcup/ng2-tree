@@ -159,6 +159,8 @@ export class TreeInternalComponent implements OnInit, OnChanges, OnDestroy, Afte
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.controller = new TreeController(this);
+    const nodeId = get(this.tree, 'node.id', '');
+    this.treeService.setController(nodeId, this.controller);
   }
 
   public ngOnDestroy(): void {
@@ -177,13 +179,15 @@ export class TreeInternalComponent implements OnInit, OnChanges, OnDestroy, Afte
   private moveNodeToThisTreeAndRemoveFromPreviousOne(e: NodeDraggableEvent, tree: Tree): void {
     const addedChild = tree.addChild(e.captured.tree);
     this.treeService.fireNodeMoved(addedChild, e.captured.tree.parent);
-    this.treeService.fireNodeRemoved(e.captured.tree);
+    e.captured.tree.removeItselfFromParent()
+    //this.treeService.fireNodeRemoved(e.captured.tree);
   }
 
   private moveNodeToParentTreeAndRemoveFromPreviousOne(e: NodeDraggableEvent, tree: Tree): void {
     const addedSibling = tree.addSibling(e.captured.tree, tree.positionInParent);
     this.treeService.fireNodeMoved(addedSibling, e.captured.tree.parent);
-    this.treeService.fireNodeRemoved(e.captured.tree);
+    e.captured.tree.removeItselfFromParent()
+    //this.treeService.fireNodeRemoved(e.captured.tree);
   }
 
   public onNodeSelected(e: { button: number }): void {

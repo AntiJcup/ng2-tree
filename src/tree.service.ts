@@ -70,7 +70,9 @@ export class TreeService {
   }
 
   public fireNodeMoved(tree: Tree, parent: Tree): void {
-    this.nodeMoved$.next(new NodeMovedEvent(tree, parent));
+    setTimeout(() => {
+      this.nodeMoved$.next(new NodeMovedEvent(tree, parent));
+    }, 0);
   }
 
   public fireMenuItemSelected(tree: Tree, selectedItem: string): void {
