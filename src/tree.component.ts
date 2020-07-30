@@ -61,9 +61,9 @@ export class TreeComponent implements OnInit, OnChanges, OnDestroy {
 
   public tree: Tree;
 
-  @ViewChild('rootComponent', {static: false}) public rootComponent;
+  @ViewChild('rootComponent') public rootComponent;
 
-  @ContentChild(TemplateRef, {static: false}) public template;
+  @ContentChild(TemplateRef) public template;
 
   private subscriptions: Subscription[] = [];
 
