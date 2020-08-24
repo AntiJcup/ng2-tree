@@ -12,7 +12,7 @@ import {
 } from './tree.types';
 import { NodeMenuItem } from './menu/node-menu.component';
 
-import * as uuidv4 from 'uuid/v4';
+import * as uuid from 'uuid';
 
 enum ChildrenLoadingState {
   NotStarted,
@@ -208,7 +208,7 @@ export class Tree {
       tree.markAsNew();
     }
 
-    tree.id = tree.id || uuidv4();
+    tree.id = tree.id || uuid.v4();
 
     if (this.childrenShouldBeLoaded() && !(this.childrenAreBeingLoaded() || this.childrenWereLoaded())) {
       return null;
