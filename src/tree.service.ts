@@ -16,8 +16,8 @@ import {
 import { RenamableNode } from './tree.types';
 import { Tree } from './tree';
 import { TreeController } from './tree-controller';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ElementRef, Inject, Injectable } from '@angular/core';
 import { NodeDraggableService } from './draggable/node-draggable.service';
 import { NodeDraggableEvent } from './draggable/draggable.events';
